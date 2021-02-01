@@ -1,0 +1,7 @@
+[build]
+publsh="buil"
+
+[[redirects]]
+from="/*"
+to="index.html"
+status = 200
