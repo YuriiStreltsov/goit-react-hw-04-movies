@@ -6,14 +6,14 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 axios.defaults.params = { api_key: '4edb548a0da264ed758bfc41cafe2bb5' };
 
-function fetchMoviesCommon(url = '', config = {}) {
-  axios(url)
-    .then(response => {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(error => {
-      console.log(error);
-    });
+async function fetchMoviesCommon(url = '', config = {}) {
+  try {
+    const response = await axios(url, config);
+    console.log(response);
+    return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function fetchMoviesTrending() {
