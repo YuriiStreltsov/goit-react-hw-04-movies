@@ -1,0 +1,4 @@
+npm install
+npm install --save-dev prettier husky lint-staged
+npm install axios
+npm install react-router-dom
