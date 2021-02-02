@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import styles from './NavHeader.module.scss';
-
+import routes from '../../routes';
 const NavHeader = () => (
   <nav>
     <NavLink
       exact
-      to="/"
+      to={routes.home}
       className={styles.link}
       activeClassName={styles.activeLink}
     >
@@ -13,7 +13,7 @@ const NavHeader = () => (
     </NavLink>
 
     <NavLink
-      to="/movies"
+      to={routes.movies}
       className={styles.link}
       activeClassName={styles.activeLink}
     >

@@ -1,30 +1,25 @@
-import { useState, useEffect } from 'react';
-import { NavLink, Route, useRouteMatch } from 'react-router-dom';
-import * as movieSearch_API from '../services/movieAPI/movieSearch-API';
+import { Component } from 'react';
+import * as movieSearchAPI from '../services/movieAPI/movieSearch-API';
+import MoviesList from '../components/MoviesList/MoviesList';
 
-export default function HomePage() {
-  const { url, path } = useRouteMatch();
-  const [movies, setMovies] = useState(null);
+class HomePage extends Component {
+  state = {
+    movies: [],
+  };
+  async componentDidMount() {
+    const response = await movieSearchAPI.fetchMoviesTrending();
 
-  useEffect(() => {
-    movieSearch_API.fetchMoviesTrending().then(setMovies);
-  }, []);
-
-  return (
-    <>
-      <h1>HomePage</h1>
-      {console.log(movies)}
-      {movies && (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <NavLink to={`${url}/${movie.id}`}>
-                {movie.title ? movie.title : movie.name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      )}
-    </>
-  );
+    this.setState({ movies: response.data.results });
+  }
+  render() {
+    const { movies } = this.state;
+    return (
+      <>
+        <h1>HomePage</h1>
+        <MoviesList movies={movies} />
+      </>
+    );
+  }
 }
+
+export default HomePage;
