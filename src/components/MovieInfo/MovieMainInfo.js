@@ -17,9 +17,9 @@ const MovieMainInfo = ({ movie, defaultImg }) => {
         <img className="poster" src={imgUrl} alt={title} />
       </div>
 
-      <div className="MoviDesc">
+      <div className="MovieDesc">
         <h2 className="title">{title}</h2>
-        <p>User score: {userScore} %</p>
+        <p className="text">User score: {userScore} %</p>
         <h3>Overview</h3>
         {overview ? <p>{overview}</p> : <p>No data</p>}
 

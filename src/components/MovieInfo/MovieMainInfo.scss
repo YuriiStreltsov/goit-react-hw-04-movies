@@ -1,3 +1,15 @@
 .movie-main-info {
   display: flex;
+  margin-bottom: 20px;
+}
+
+.MovieDesc {
+  width: 400px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 10px;
+
+  & :not(:last-child) {
+    margin-bottom: 10px;
+  }
 }

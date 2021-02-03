@@ -8,7 +8,7 @@ import routes from './routes';
 
 function App() {
   return (
-    <>
+    <Container>
       <AppBar />
 
       <Switch>
@@ -16,7 +16,7 @@ function App() {
         <Route path={routes.movies} exact component={MoviesPage} />
         <Route path={routes.moviesDetails} component={MovieDetailsPage} />
       </Switch>
-    </>
+    </Container>
   );
 }
 
