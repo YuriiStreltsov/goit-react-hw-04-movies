@@ -7,8 +7,10 @@ const MovieMainInfo = ({ movie, defaultImg }) => {
 
   const userScore = vote_average * 10;
 
-  const imgPath = `${originPath.imagePoster}/${poster_path}`;
+  const imgPath = `${originPath.imagePoster}${poster_path}`;
   const imgUrl = poster_path ? imgPath : defaultImg;
+  console.log(originPath.imagePoster, poster_path);
+  console.log(imgUrl);
 
   return (
     <>
