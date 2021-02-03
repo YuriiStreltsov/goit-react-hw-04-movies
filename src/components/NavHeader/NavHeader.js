@@ -7,17 +7,13 @@ const NavHeader = () => (
     <NavLink
       exact
       to={routes.home}
-      className="link-home"
+      className="link"
       activeClassName="activeLink"
     >
       Home
     </NavLink>
 
-    <NavLink
-      to={routes.movies}
-      className="link-movies"
-      activeClassName="activeLink"
-    >
+    <NavLink to={routes.movies} className="link" activeClassName="activeLink">
       Movies
     </NavLink>
   </nav>

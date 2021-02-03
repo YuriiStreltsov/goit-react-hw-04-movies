@@ -11,29 +11,33 @@ const MovieMainInfo = ({ movie, defaultImg }) => {
   const imgUrl = poster_path ? imgPath : defaultImg;
 
   return (
-    <div className="movie-main-info">
-      <div className="MovieImg">
-        <button type="button">&#8592; Go back</button>
-        <img className="poster" src={imgUrl} alt={title} />
+    <>
+      <button className="button-back" type="button">
+        &#8592; Go back
+      </button>
+      <div className="movie-main-info">
+        <div className="MovieImg">
+          <img className="poster" src={imgUrl} alt={title} />
+        </div>
+
+        <div className="MovieDesc">
+          <h2 className="title">{title}</h2>
+          <p className="text">User score: {userScore} %</p>
+          <h3>Overview</h3>
+          {overview ? <p>{overview}</p> : <p>No data</p>}
+
+          <h3>Genres</h3>
+
+          <p>
+            {genres && genres.length > 0 ? (
+              genres.map(ganre => ganre.name).join(' ')
+            ) : (
+              <p>No data</p>
+            )}
+          </p>
+        </div>
       </div>
-
-      <div className="MovieDesc">
-        <h2 className="title">{title}</h2>
-        <p className="text">User score: {userScore} %</p>
-        <h3>Overview</h3>
-        {overview ? <p>{overview}</p> : <p>No data</p>}
-
-        <h3>Genres</h3>
-
-        <p>
-          {genres && genres.length > 0 ? (
-            genres.map(ganre => ganre.name).join(' ')
-          ) : (
-            <p>No data</p>
-          )}
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 
