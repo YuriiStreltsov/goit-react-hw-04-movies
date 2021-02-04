@@ -1,16 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import './MoviesList.scss';
 
-function MoviesList({ movies }) {
+function MoviesList({ movies, location }) {
   return (
     <>
       {movies && (
-        <ul>
+        <ul className="MoviesList">
           {movies.map(movie => (
-            <li key={movie.id}>
-              <NavLink to={`movies/${movie.id}`}>
+            <li key={movie.id} className="item">
+              <Link
+                to={{
+                  pathname: `movies/${movie.id}`,
+                  state: { from: location },
+                }}
+              >
                 {movie.title ? movie.title : movie.name}
-              </NavLink>
+              </Link>
             </li>
           ))}
         </ul>
@@ -19,4 +25,4 @@ function MoviesList({ movies }) {
   );
 }
 
-export default MoviesList;
+export default withRouter(MoviesList);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import Cast from './Cast';
 import Reviews from './Reviews';
+import './MovieOtherInfo.scss';
 
 // ({ url, path }) =>
 class MovieOtherInfo extends Component {
@@ -11,12 +12,12 @@ class MovieOtherInfo extends Component {
     const { url, path } = this.props;
     return (
       <div className="movie-other-info">
-        <p>Additional information</p>
+        <h3 className="title">Additional information</h3>
         <ul>
-          <li>
+          <li className="item">
             <Link to={`${url}/cast`}>Cast</Link>
           </li>
-          <li>
+          <li className="item">
             <Link to={`${url}/reviews`}>Reviews</Link>
           </li>
         </ul>

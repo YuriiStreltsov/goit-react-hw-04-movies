@@ -15,7 +15,7 @@ class HomePage extends Component {
     const { movies } = this.state;
     return (
       <>
-        <h1>HomePage</h1>
+        <h1>Trending today</h1>
         <MoviesList movies={movies} />
       </>
     );

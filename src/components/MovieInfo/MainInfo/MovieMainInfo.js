@@ -1,5 +1,5 @@
 import React from 'react';
-import originPath from '../../path';
+import originPath from '../../../path';
 import './MovieMainInfo.scss';
 
 const MovieMainInfo = ({ movie, defaultImg }) => {
@@ -9,17 +9,12 @@ const MovieMainInfo = ({ movie, defaultImg }) => {
 
   const imgPath = `${originPath.imagePoster}${poster_path}`;
   const imgUrl = poster_path ? imgPath : defaultImg;
-  console.log(originPath.imagePoster, poster_path);
-  console.log(imgUrl);
 
   return (
     <>
-      <button className="button-back" type="button">
-        &#8592; Go back
-      </button>
       <div className="movie-main-info">
         <div className="MovieImg">
-          <img className="poster" src={imgUrl} alt={title} />
+          <img className="poster" src={imgUrl} alt={title} width={185} />
         </div>
 
         <div className="MovieDesc">
@@ -30,13 +25,11 @@ const MovieMainInfo = ({ movie, defaultImg }) => {
 
           <h3>Genres</h3>
 
-          <p>
-            {genres && genres.length > 0 ? (
-              genres.map(ganre => ganre.name).join(' ')
-            ) : (
-              <p>No data</p>
-            )}
-          </p>
+          {genres && genres.length > 0 ? (
+            <p>{genres.map(ganre => ganre.name).join(' ')}</p>
+          ) : (
+            <p>No data</p>
+          )}
         </div>
       </div>
     </>

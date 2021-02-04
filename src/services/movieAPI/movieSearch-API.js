@@ -23,3 +23,6 @@ export function fetchMovieById(movieId) {
 export function fetchMovieCastInfo(movieId) {
   return fetchMoviesCommon(`movie/${movieId}/credits`);
 }
+export function fetchMovieOnSubmit(query) {
+  return fetchMoviesCommon(`/search/movie?query=${query}`);
+}
