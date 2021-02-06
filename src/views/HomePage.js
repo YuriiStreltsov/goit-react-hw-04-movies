@@ -10,7 +10,6 @@ class HomePage extends Component {
     const response = await movieSearchAPI.fetchMoviesTrending();
 
     this.setState({ movies: response.data.results });
-    console.log(this.props.location);
   }
   render() {
     const { movies } = this.state;

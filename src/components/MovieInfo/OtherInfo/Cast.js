@@ -11,6 +11,7 @@ class Cast extends Component {
   state = {
     info: null,
   };
+
   async componentDidMount() {
     const { movieId } = this.props.match.params;
 
@@ -20,9 +21,14 @@ class Cast extends Component {
 
   render() {
     const { info } = this.state;
+
+    if (info === null) {
+      return <></>;
+    }
+
     return (
       <>
-        {info !== null && (
+        {info.cast.length > 0 ? (
           <ul className="CastList">
             {info.cast.map(elem => (
               <li key={elem.id} className="item">
@@ -41,6 +47,8 @@ class Cast extends Component {
               </li>
             ))}
           </ul>
+        ) : (
+          <p>No info</p>
         )}
       </>
     );
