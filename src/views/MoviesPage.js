@@ -28,8 +28,11 @@ class MoviesPage extends Component {
     return (
       <>
         <Form onSubmit={this.handleSearch} />
-        <MoviesList movies={this.state.movies} />
-        <Route path="" component={MoviesList} />
+        {this.state.movies && (
+          <>
+            <MoviesList movies={this.state.movies} />
+          </>
+        )}
       </>
     );
   }

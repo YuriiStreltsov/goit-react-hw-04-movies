@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import './MoviesList.scss';
 
 function MoviesList({ movies, location }) {
@@ -9,14 +9,14 @@ function MoviesList({ movies, location }) {
         <ul className="MoviesList">
           {movies.map(movie => (
             <li key={movie.id} className="item">
-              <Link
+              <NavLink
                 to={{
                   pathname: `movies/${movie.id}`,
                   state: { from: location },
                 }}
               >
                 {movie.title ? movie.title : movie.name}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
