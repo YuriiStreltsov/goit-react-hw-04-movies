@@ -39,11 +39,7 @@ class Cast extends Component {
                     width="45"
                   />
                 ) : (
-                  <img
-                    src={this.props.defaultImg}
-                    alt="No picture an Actor"
-                    width="45"
-                  />
+                  <img src={this.props.defaultImg} alt="Not found" width="45" />
                 )}
 
                 {elem.original_name}
