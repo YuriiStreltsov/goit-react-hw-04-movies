@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import queryString from 'query-string';
 
 import MoviesList from '../components/MoviesList/MoviesList';
 import * as movieSearchAPI from '../services/movieAPI/movieSearch-API';
@@ -12,7 +13,8 @@ class MoviesPage extends Component {
   componentDidMount() {
     const { search } = this.props.location;
     if (search) {
-      const response = movieSearchAPI.fetchMovieOnSubmit(search);
+      const parsed = queryString.parse(search);
+      const response = movieSearchAPI.fetchMovieOnSubmit(parsed.query);
       response.then(r => this.setState({ movies: r.data.results }));
     }
   }
@@ -20,8 +22,7 @@ class MoviesPage extends Component {
   handleSearch = query => {
     const { history, match } = this.props;
     history.push(`${match.url}?query=${query}`);
-    this.setState({ query: query });
-    const response = movieSearchAPI.fetchMovieOnSubmit(`?query=${query}`);
+    const response = movieSearchAPI.fetchMovieOnSubmit(query);
     response.then(r => this.setState({ movies: r.data.results }));
   };
 

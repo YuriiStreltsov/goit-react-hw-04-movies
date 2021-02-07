@@ -4,6 +4,7 @@ import Container from './components/Container/Container';
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import MovieDetailsPage from './views/MovieDetailsPage';
+import NotFoundView from './views/NotFoundView';
 import routes from './routes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +19,7 @@ function App() {
           <Route exact path={routes.home} component={HomePage} />
           <Route path={routes.movies} exact component={MoviesPage} />
           <Route path={routes.moviesDetails} component={MovieDetailsPage} />
+          <Route component={NotFoundView} />
         </Switch>
       </Container>
       <ToastContainer position="top-right" autoClose={3000} />

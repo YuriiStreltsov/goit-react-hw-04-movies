@@ -13,6 +13,7 @@ class MovieDetailsPage extends Component {
   async componentDidMount() {
     const { movieId } = this.props.match.params;
     const response = await movieSearchAPI.fetchMovieById(movieId);
+
     this.setState({ movie: response.data });
   }
 
@@ -37,10 +38,7 @@ class MovieDetailsPage extends Component {
               &#8592; Go back
             </button>
             <MovieMainInfo movie={this.state.movie} defaultImg={defaultImg} />
-            <MovieOtherInfo
-              url={this.props.match.url}
-              path={this.props.match.path}
-            />
+            <MovieOtherInfo />
           </>
         )}
       </div>

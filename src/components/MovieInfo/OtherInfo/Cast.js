@@ -1,4 +1,5 @@
 import { Component } from 'react';
+// import { withRouter } from 'react-router-dom';
 import * as movieSearchApi from '../../../services/movieAPI/movieSearch-API';
 import originPath from '../../../path';
 import './Cast.scss';
@@ -13,7 +14,7 @@ class Cast extends Component {
   };
 
   async componentDidMount() {
-    const { movieId } = this.props.match.params;
+    const { movieId } = this.props;
 
     const response = await movieSearchApi.fetchMovieCastInfo(movieId);
     this.setState({ info: response.data });

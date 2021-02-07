@@ -2,30 +2,45 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import Cast from './Cast';
 import Reviews from './Reviews';
+import { withRouter } from 'react-router-dom';
+
 import './MovieOtherInfo.scss';
 
-// ({ url, path }) =>
 class MovieOtherInfo extends Component {
   state = {};
 
   render() {
-    const { url, path } = this.props;
+    const { match, location } = this.props;
+    console.log(match.url, location);
     return (
       <div className="movie-other-info">
         <h3 className="title">Additional information</h3>
-        <ul>
+        <ul className="list">
           <li className="item">
-            <Link to={`${url}/cast`}>Cast</Link>
+            <Link
+              to={{
+                pathname: `${match.url}/cast`,
+                state: { from: location },
+              }}
+            >
+              Cast
+            </Link>
           </li>
           <li className="item">
-            <Link to={`${url}/reviews`}>Reviews</Link>
+            <Link to={`${match.url}/reviews`}>Reviews</Link>
           </li>
         </ul>
-        <Route path={`${path}/cast`} component={Cast} />
-        <Route path={`${path}/reviews`} component={Reviews} />
+        <Route
+          path={`${match.url}/cast`}
+          render={props => <Cast movieId={match.params.movieId} />}
+        />
+        <Route
+          path={`${match.url}/reviews`}
+          render={props => <Reviews movieId={match.params.movieId} />}
+        />
       </div>
     );
   }
 }
 
-export default MovieOtherInfo;
+export default withRouter(MovieOtherInfo);
