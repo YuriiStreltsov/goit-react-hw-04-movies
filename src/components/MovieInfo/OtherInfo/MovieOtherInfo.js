@@ -26,16 +26,25 @@ class MovieOtherInfo extends Component {
             </Link>
           </li>
           <li className="item">
-            <Link to={`${match.url}/reviews`}>Reviews</Link>
+            <Link
+              to={{
+                pathname: `${match.url}/reviews`,
+                state: { from: location },
+              }}
+            >
+              Reviews
+            </Link>
           </li>
         </ul>
         <Route
           path={`${match.url}/cast`}
-          render={props => <Cast movieId={match.params.movieId} />}
+          render={props => <Cast {...props} movieId={match.params.movieId} />}
         />
         <Route
           path={`${match.url}/reviews`}
-          render={props => <Reviews movieId={match.params.movieId} />}
+          render={props => (
+            <Reviews {...props} movieId={match.params.movieId} />
+          )}
         />
       </div>
     );
