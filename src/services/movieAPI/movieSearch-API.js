@@ -3,10 +3,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 axios.defaults.params = { api_key: '4edb548a0da264ed758bfc41cafe2bb5' };
 
-function fetchMoviesCommon(url = '', config = {}) {
+async function fetchMoviesCommon(url = '', config = {}) {
   try {
-    const response = axios(url, config);
-    console.log(response);
+    const response = await axios(url, config);
     return response;
   } catch (error) {
     console.log(error);

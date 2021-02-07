@@ -13,8 +13,9 @@ class MovieDetailsPage extends Component {
   async componentDidMount() {
     const { movieId } = this.props.match.params;
     const response = await movieSearchAPI.fetchMovieById(movieId);
-
-    this.setState({ movie: response.data });
+    if (response) {
+      this.setState({ movie: response.data });
+    }
   }
 
   handleGoback = () => {
@@ -28,15 +29,15 @@ class MovieDetailsPage extends Component {
   render() {
     return (
       <div className="MovieDetailsPage">
+        <button
+          className="button-back"
+          type="button"
+          onClick={this.handleGoback}
+        >
+          &#8592; Go back
+        </button>
         {this.state.movie !== null && (
           <>
-            <button
-              className="button-back"
-              type="button"
-              onClick={this.handleGoback}
-            >
-              &#8592; Go back
-            </button>
             <MovieMainInfo movie={this.state.movie} defaultImg={defaultImg} />
             <MovieOtherInfo />
           </>

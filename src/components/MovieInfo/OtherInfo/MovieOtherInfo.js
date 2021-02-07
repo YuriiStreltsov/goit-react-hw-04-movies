@@ -11,7 +11,6 @@ class MovieOtherInfo extends Component {
 
   render() {
     const { match, location } = this.props;
-    console.log(match.url, location);
     return (
       <div className="movie-other-info">
         <h3 className="title">Additional information</h3>
